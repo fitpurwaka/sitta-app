@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - SITTA</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+            <h1>SITTA</h1>
+            <div id="greeting"></div>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        
+        <nav class="sidebar">
+            <ul class="nav-menu">
+                <li><a href="stok.html" class="active"><i class="fas fa-book"></i> Informasi Bahan Ajar</a></li>
+                <li><a href="tracking.html"><i class="fas fa-truck"></i> Tracking Pengiriman</a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle"><i class="fas fa-chart-bar"></i> Laporan</a>
+                    <ul class="dropdown">
+                        <li><a href="#monitoring">Monitoring Progress DO Bahan Ajar</a></li>
+                        <li><a href="#rekap">Rekap Bahan Ajar</a></li>
+                    </ul>
+                </li>
+                <li><a href="#histori"><i class="fas fa-history"></i> Histori Transaksi Bahan Ajar</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="page-header">
+                <h2>Ringkasan Kinerja</h2>
+                <p>Status pesanan terbaru.</p>
+            </div>
+            
+            <section class="dashboard-cards">
+                <div class="card">
+                    <h3>Total Pesanan</h3>
+                    <p class="number">156</p>
+                </div>
+                <div class="card">
+                    <h3>Dalam Pengiriman</h3>
+                    <p class="number">42</p>
+                </div>
+                <div class="card">
+                    <h3>Selesai</h3>
+                    <p class="number">114</p>
+                </div>
+            </section>
+
+            <section class="quick-access">
+                <h2>Akses Cepat</h2>
+                <div class="button-grid">
+                    <button onclick="window.location.href='stok.html'">
+                        <i class="fas fa-box"></i> Cek Stok Bahan Ajar
+                    </button>
+                    <button onclick="window.location.href='tracking.html'">
+                        <i class="fas fa-search-location"></i> Tracking Pengiriman
+                    </button>
+                </div>
+            </section>
+        </main>
+    
+    </div>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

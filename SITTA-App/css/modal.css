@@ -1,0 +1,121 @@
+/* ==========================================================
+   DEFAULT MODAL STYLES (MODAL.CSS) - Refined for UI & Aesthetics
+   ========================================================== */
+
+/* Catatan: Asumsi variabel seperti --white, --dark-gray, --primary-color, 
+   --shadow-lg-soft, --spacing-xl/lg/md/sm sudah terdefinisi.
+*/
+
+
+/* --- 1. Backdrop Modal (Overlay Gelap dan Blur) --- */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(237, 237, 237, 0.817); /* Overlay */
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(4px); 
+    
+    display: none; 
+    justify-content: center; 
+    align-items: center; 
+    z-index: 1050; 
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.modal-backdrop.show {
+    display: flex;
+    opacity: 1;
+}
+
+/* --- 2. Konten Modal (Card Putih Modern, Rapi) --- */
+.modal-content {
+    padding: 30px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid #f0f0f0; /* Tambahkan border halus */
+    
+    /* Shadow lembut besar agar terlihat melayang */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Nilai shadow diperhalus */
+    
+    width: 90%; 
+    max-width: 600px; 
+    transform: translateY(-50px); 
+    transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+
+.modal-backdrop.show .modal-content {
+    transform: translateY(0); 
+}
+
+/* --- 3. Header Modal (Judul dan Tombol Tutup) --- */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md) 0; /* Padding vertikal di header */
+    border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700; /* Dibuat lebih tebal */
+    letter-spacing: -0.5px; /* Sedikit sentuhan tipografi */
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* Ukuran icon close diperbesar */
+    line-height: 1;
+    color: var(--gray);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    padding: 0; /* Hapus padding default browser */
+}
+
+.modal-close-btn:hover {
+    color: var(--danger-color);
+    transform: rotate(90deg); /* Efek visual saat hover */
+}
+
+/* --- 4. Body Modal --- */
+.modal-body {
+    padding: var(--spacing-md) 0; /* Tambahkan padding vertikal di body */
+}
+
+
+/* --- 5. Footer Modal (Tombol Aksi) --- */
+.modal-footer {
+    padding-top: var(--spacing-lg); /* Padding lebih besar dari body */
+    margin-top: var(--spacing-lg);
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+}
+
+/* --- 6. Form Group Alignment (Opsional, jika Anda menggunakan form-row) --- */
+/* Form-row dan Form-group harus disesuaikan di stok.css jika ada masalah */
+
+/* --- 7. Responsif --- */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: var(--spacing-md); /* Padding lebih kecil di ponsel */
+        margin: var(--spacing-md) auto;
+    }
+    
+    .modal-header {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .modal-header h2 {
+        font-size: 1.3rem;
+    }
+}

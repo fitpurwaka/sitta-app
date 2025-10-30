@@ -1,0 +1,327 @@
+/* ==========================================================
+   SITTA DASHBOARD STYLES - FINAL VERSION (Flexbox & Modern)
+   ========================================================== */
+
+/* --- 1. Variabel Dasar & Utilitas --- */
+:root {
+    /* Warna */
+    --primary-color: #007bff; /* Biru Primer yang Kuat */
+    --primary-color-rgb: 0, 123, 255;
+    --accent-color: #28a745; /* Hijau Aksen untuk Kesuksesan */
+    --white: #ffffff;
+    --dark-gray: #343a40;
+    --gray: #6c757d;
+    --background-subtle: #f8f9fa; /* Latar belakang sangat halus */
+
+    /* Spacing */
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Radius & Transisi */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --transition-normal: 0.3s ease;
+
+    /* Shadows Lembut (Modern) */
+    --shadow-sm-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Font Global */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 2. Layout Utama (Perbaikan Overlap) --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-subtle);
+    display: flex;
+    flex-direction: column; /* Header di atas, Content Wrapper di bawah */
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    display: flex; /* Mengatur Sidebar dan Main Content secara berdampingan */
+    flex-direction: row; /* Memastikan wrapper mengisi sisa ruang vertikal */
+}
+
+/* --- 3. Header SITTA --- */
+header {
+    background: linear-gradient(135deg, var(--primary-color), #0056b3);
+    color: var(--white);
+    padding: var(--spacing-md) 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;
+    /* Tidak ada positioning absolute/fixed/sticky di sini */
+}
+
+.page-header{
+    padding-bottom: 20px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+#greeting {
+    font-size: 1.1rem;
+    font-weight: 500;
+    flex-grow: 1;
+    margin-left: var(--spacing-lg);
+}
+
+#logoutBtn {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+#logoutBtn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+/* --- 4. Sidebar Navigasi --- */
+.sidebar {
+    width: 250px;
+    background: var(--white);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0; /* Penting: Mencegah sidebar menyusut */
+    padding-top: var(--spacing-md);
+    /* Tidak ada positioning absolute/fixed */
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 2px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px var(--spacing-md);
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-normal);
+    position: relative;
+}
+
+.sidebar a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: var(--primary-color);
+    transition: var(--transition-normal);
+}
+
+.sidebar a:hover {
+    background: rgba(var(--primary-color-rgb), 0.05);
+    color: var(--primary-color);
+    padding-left: 20px;
+}
+
+.sidebar a:hover::before,
+.sidebar a.active::before {
+    width: 4px;
+}
+
+.sidebar a.active {
+    background: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Dropdown Menu */
+.sidebar .dropdown-toggle {
+    /* Tambahkan kelas aktif di HTML untuk toggle dropdown */
+}
+.sidebar .dropdown {
+    list-style: none;
+    padding: 0;
+    background: rgba(var(--primary-color-rgb), 0.03);
+    border-left: 3px solid rgba(var(--primary-color-rgb), 0.1);
+    /* Dropdown biasanya disembunyikan dengan display: none; */
+}
+
+.sidebar .dropdown a {
+    padding: 8px var(--spacing-md) 8px 30px;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* --- 5. Main Content --- */
+main {
+    padding: var(--spacing-xl);
+    flex-grow: 1; /* Memastikan main content mengambil sisa ruang */
+}
+
+/* --- 6. Dashboard Cards --- */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.card {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm-soft);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg-soft);
+}
+
+.card h3 {
+    color: var(--gray);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+/* --- 7. Akses Cepat (Quick Access) --- */
+.quick-access {
+    background: var(--white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm-soft);
+    margin-bottom: var(--spacing-xl);
+}
+
+.quick-access h2 {
+    color: var(--dark-gray);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.button-grid {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.button-grid button {
+    flex: 1;
+    padding: var(--spacing-md);
+    background: var(--background-subtle);
+    color: var(--primary-color);
+    border: 1px solid rgba(var(--primary-color-rgb), 0.2);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.button-grid button:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm-soft);
+}
+
+/* --- 8. Responsif --- */
+@media (max-width: 992px) {
+    .content-wrapper {
+        flex-direction: column; /* Sidebar dan Main Content menumpuk */
+    }
+
+    .sidebar {
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        padding-bottom: 0;
+    }
+    
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Batas visual */
+    }
+
+    .sidebar li {
+        flex-shrink: 0;
+    }
+
+    .sidebar a {
+        padding: 10px var(--spacing-md);
+    }
+    
+    main {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    header h1, #greeting {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-grid {
+        flex-direction: column;
+    }
+}

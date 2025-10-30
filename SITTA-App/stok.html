@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Stok Bahan Ajar - SITTA</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/stok.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="dashboard.html"><i class="fas fa-arrow-left"></i> Kembali</a>
+        <h1>Informasi Stok Bahan Ajar</h1>     
+    </header>
+
+    <main class="container">
+        <div class="toolbar">
+            <button id="btnTambahStok" class="btn-add"> 
+                <i class="fas fa-plus"></i> Tambah Stok Baru
+            </button>
+            <!-- <input type="text" 
+                    id="searchInput" 
+                    placeholder="Cari bahan ajar..."> -->
+        </div>
+
+        <div class="table-container">
+            <table id="tabelStok">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Kode</th>
+                        <th>Nama Bahan Ajar</th>
+                        <th>Kategori</th>
+                        <th>Stok</th>
+                        <th>Lokasi</th>
+                        <th>Cover</th> <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyStok">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="modalStok" class="modal-backdrop"> 
+        <div class="modal-content">
+            <div class="modal-header"> 
+                <h2 id="modalTitle">Tambah Stok Baru</h2>
+                <button class="modal-close-btn modal-stok-close">&times;</button> 
+            </div>
+            
+            <div class="modal-body">
+                <form id="formStok">
+                    <div class="form-row"> 
+                        <div class="form-group">
+                            <label>Kode Barang: <span class="required">*</span></label>
+                            <input type="text" id="inputKodeBarang" placeholder="Contoh: EKMA4216"
+                                    pattern="[A-Z]{4}[0-9]{4}" title="Format: 4 huruf besar + 4 angka" required>
+                            <small>Format: 4 huruf + 4 angka (contoh: EKMA4216)</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Bahan Ajar: <span class="required">*</span></label>
+                            <input type="text" id="inputNama" placeholder="Contoh: Manajemen Keuangan" minlength="5" required>
+                        </div>
+                    </div> 
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Jenis Barang: <span class="required">*</span></label>
+                            <select id="inputJenis" required>
+                                <option value="">Pilih Jenis</option>
+                                <option value="BMP">BMP (Buku Materi Pokok)</option>
+                                <option value="Non-BMP">Non-BMP</option>
+                                <option value="Modul">Modul</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Edisi: <span class="required">*</span></label>
+                            <input type="number" id="inputEdisi" min="1" max="10" required>
+                        </div>
+                    </div> 
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Jumlah Stok: <span class="required">*</span></label>
+                            <input type="number" id="inputStok" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Kode Lokasi: <span class="required">*</span></label>
+                            <input type="text" id="inputLokasi" placeholder="Contoh: 0JKT01" required>
+                        </div>
+                    </div> 
+                    
+                    <div class="modal-footer">
+                        <button type="submit" class="btn-add"><i class="fas fa-save"></i> Simpan</button>
+                        <button type="button" class="btn-delete modal-stok-close"><i class="fas fa-times"></i> Batal</button>
+                    </div>
+                </form>
+            </div> 
+        </div>
+    </div> 
+
+    <div id="modalDetail" class="modal-backdrop"> 
+        <div class="modal-content" style="max-width: 450px;"> 
+            <div class="modal-header"> 
+                <h2 id="modalDetailTitle">📖 Detail Bahan Ajar</h2>
+                <button class="modal-close-btn modal-detail-close">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img id="detailCover" src="" alt="Cover Bahan Ajar" class="detail-cover-image">
+                </div>
+                
+                <div class="detail-grid"> 
+                    <div>Kode Barang</div>
+                    <div id="detailKode"></div>
+                    
+                    <div>Nama Bahan Ajar</div>
+                    <div id="detailNama"></div>
+                    
+                    <div>Jenis</div>
+                    <div id="detailJenis"></div>
+                    
+                    <div>Edisi</div>
+                    <div id="detailEdisi"></div>
+
+                    <div>Stok</div>
+                    <div id="detailStok"></div>
+                    
+                    <div>Lokasi</div>
+                    <div id="detailLokasi"></div>
+                </div>
+            </div> 
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary modal-detail-close"><i class="fas fa-times"></i> Tutup</button>
+            </div>
+        </div>
+    </div> 
+
+    <script src="js/data.js"></script>
+    <script src="js/stok.js"></script>
+</body>
+</html>

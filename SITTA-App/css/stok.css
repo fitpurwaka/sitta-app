@@ -1,0 +1,400 @@
+/* ==========================================================
+   STOK BAHAN AJAR STYLES - FINAL VERSION (Dashboard Look)
+   ========================================================== */
+
+body{
+    margin: 32px;
+}
+
+ header h1{
+    padding-top: 20px;
+}
+
+/* --- 1. Toolbar --- */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.toolbar-left {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.btn-add {
+    padding: 12px 24px;
+    /* Menggunakan gradien sukses yang konsisten */
+    background: linear-gradient(135deg, var(--accent-color), var(--success-color)); 
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    box-shadow: var(--shadow-sm-soft); /* Shadow lembut */
+}
+
+.btn-add:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md); /* Shadow sedikit naik saat hover */
+}
+
+#searchInput {
+    padding: 10px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: var(--radius-md);
+    width: 300px;
+    font-size: 14px;
+    transition: all var(--transition-fast);
+}
+
+#searchInput:focus {
+    /* Fokus dengan warna primer dan shadow lembut */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1); 
+    outline: none;
+}
+
+/* --- 2. Statistik Cards --- */
+.stats-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.stat-card {
+    background: var(--white);
+    padding: var(--spacing-lg); /* Padding lebih lega */
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm-soft); /* Konsisten dengan card dashboard */
+    text-align: left; /* Teks rata kiri */
+    border-left: 5px solid var(--primary-color); /* Aksen garis tebal */
+}
+
+.stat-card h4 {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+}
+
+.stat-card .number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+
+/* --- 3. Table Styles --- */
+.table-container {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md); /* Shadow card utama */
+    border: 1px solid #e9ecef;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    /* Gradien untuk head tabel agar elegan */
+    background: linear-gradient(90deg, var(--primary-color), #0056b3); 
+}
+
+thead th {
+    color: var(--white);
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 14px;
+    color: var(--dark-gray);
+    vertical-align: middle;
+}
+
+tbody tr {
+    transition: var(--transition-fast);
+}
+
+tbody tr:hover {
+    background: var(--background-subtle);
+}
+
+tbody tr.row-warning {
+    background: #dceaff; /* Warna warning lembut */
+}
+
+tbody tr.row-warning:hover {
+    background: #c1d5ff;
+}
+
+/* Action Buttons in Table */
+.btn-edit,
+.btn-delete,
+.btn-view {
+    padding: 8px; /* Ukuran kotak agar mudah disentuh di ponsel */
+    width: 34px; /* Lebar tetap */
+    height: 34px; /* Tinggi tetap */
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition-fast);
+    margin-right: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-edit {
+    background: #2864ee; /* Info color */
+    color: var(--white);
+}
+
+.btn-edit:hover {
+    background: #5483ee;
+    transform: scale(1.05);
+}
+
+.btn-delete {
+    background: var(--danger-color);
+    color: var(--white);
+}
+
+.btn-delete:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+.btn-view {
+    background: #2864ee; /* Warning color */
+    color: var(--white);
+}
+
+.btn-view:hover {
+    background: #5483ee;
+    transform: scale(1.05);
+}
+
+/* Badge Stok */
+.badge-stok {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px; /* Lebih bulat seperti pil */
+    font-weight: 700;
+    font-size: 13px;
+    min-width: 50px;
+    text-align: center;
+    line-height: 1;
+}
+
+.badge-stok.stok-rendah {
+    background: var(--danger-color);
+    color: var(--white);
+    animation: pulse 2s infinite;
+}
+
+.badge-stok.stok-aman {
+    background: var(--success-color);
+    color: var(--white);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+    }
+}
+
+/* --- 4. Form/Modal Styles (Tingkatkan input & label) --- */
+.modal-content {
+    max-width: 600px;
+}
+
+.modal-content h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid #e9ecef;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+.form-row input,
+.form-row select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: all var(--transition-fast);
+}
+
+.form-row input:focus,
+.form-row select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1);
+    outline: none;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.form-buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    justify-content: flex-end; /* Rata kanan */
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+}
+
+/* --- 5. Pagination --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    background: var(--white);
+    color: var(--dark-gray);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.pagination button:hover:not(.active) {
+    background: #f1f1f1;
+}
+
+.pagination button.active {
+    background: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* BARU: Styling untuk Cover Thumbnail di Tabel */
+.cover-thumbnail {
+    /* Atur ukuran thumbnail cover */
+    width: 40px; 
+    height: auto;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-xs);
+    /* Agar image cover tetap vertikal di tengah */
+    vertical-align: middle; 
+}
+
+
+.detail-cover-image {
+    max-width: 150px; 
+    height: auto; 
+    border: 1px solid #ccc; 
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Detail Grid (Mungkin sudah ada, tapi memastikan struktur rapi) */
+.detail-grid {
+    display: grid;
+    grid-template-columns: 130px 1fr; /* Kolom label dan kolom nilai */
+    gap: 10px 20px;
+    align-items: center;
+}
+
+.detail-grid > div:nth-child(odd) {
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+
+/* --- 6. Responsive UX --- */
+@media (max-width: 992px) {
+    /* Toolbar & Search di Mobile */
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .toolbar-left, .toolbar-right {
+        width: 100%;
+    }
+    
+    #searchInput {
+        width: 100%;
+        margin-top: var(--spacing-sm); /* Beri jarak dari tombol tambah */
+    }
+    
+    .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Form Rows */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stats Card */
+    .stats-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Tabel Responsif (Wajib) */
+    .table-container {
+        /* Memungkinkan scroll horizontal jika lebar tidak cukup */
+        overflow-x: auto; 
+    }
+    
+    table {
+        /* Set lebar minimum agar tabel tidak hancur */
+        min-width: 750px; 
+    }
+    
+    thead th, tbody td {
+        padding: 12px 10px; /* Padding lebih kecil di ponsel */
+    }
+}

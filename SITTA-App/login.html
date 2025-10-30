@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SITTA UT</title>
+    
+    <!-- CSS External -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
+    
+    <!-- CSS Internal -->
+    <style>
+        /* CSS Internal untuk requirement */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .login-wrapper {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+        
+        .demo-accounts {
+            background: #fff3cd;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 16px;
+            font-size: 12px;
+        }
+        
+        .demo-accounts h4 {
+            margin: 0 0 8px 0;
+            color: #856404;
+            font-size: 13px;
+        }
+        
+        .demo-accounts p {
+            margin: 4px 0;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-container">
+            <!-- Header Login -->
+            <div class="login-header">
+                <div class="login-logo"><img src="asset/logout.png" alt="Logo Logout" class="logout-logo"></div>
+                <!-- CSS Inline untuk requirement -->
+                <h1 style="color: #59acfe; margin-bottom: 8px;">SITTA</h1>
+                <p style="color: #6c757d; font-size: 14px;">Pemesanan bahan ajar Universitas Terbuka</p>
+            </div>
+
+            <!-- Form Login -->
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">📧</span>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            placeholder="Contoh: admin@ut.ac.id"
+                            required
+                            autocomplete="email">
+                    </div>
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password"
+                            placeholder="Masukkan password"
+                            required
+                            autocomplete="current-password">
+                    </div>
+                    <span class="error-message" id="passwordError"></span>
+                </div>
+                
+                <button type="submit" class="login-btn">
+                    🔑 Masuk
+                </button>
+            </form>
+
+            <!-- Login Options -->
+            <div class="login-options">
+                <a href="#" id="lupaPasswordBtn">🔐 Lupa Password?</a>
+                <a href="#" id="daftarBtn">📝 Daftar Akun Baru</a>
+            </div>
+
+            <!-- Demo Accounts Info
+            <div class="demo-accounts">
+                <h4>💡 Akun Demo untuk Testing:</h4>
+                <p><strong>Admin:</strong> admin@ut.ac.id / admin123</p>
+                <p><strong>UPBJJ:</strong> rina@ut.ac.id / rina123</p>
+                <p><strong>Fakultas:</strong> doni@ut.ac.id / doni123</p>
+            </div> -->
+
+            <!-- Back to Home -->
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="index.html" style="color: #0066CC; text-decoration: none; font-size: 14px;">
+                    ← Kembali ke Halaman Utama
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lupa Password -->
+    <div id="modalLupaPassword" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLupaPassword">&times;</span>
+            <div class="modal-header">
+                <h2>🔐 Lupa Password</h2>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 16px; color: #6c757d;">
+                    Masukkan email Anda untuk menerima link reset password
+                </p>
+                <form id="formLupaPassword">
+                    <div class="form-group">
+                        <label for="emailReset">Email</label>
+                        <input 
+                            type="email" 
+                            id="emailReset" 
+                            placeholder="email@ut.ac.id"
+                            required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="btnBatalLupa">
+                            Batal
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Kirim Link Reset
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Daftar -->
+    <div id="modalDaftar" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeDaftar">&times;</span>
+            <div class="modal-header">
+                <h2>📝 Daftar Akun Baru</h2>
+            </div>
+            <div class="modal-body">
+                <form id="formDaftar">
+                    <div class="form-group">
+                        <label for="namaDaftar">Nama Lengkap <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="namaDaftar" 
+                            placeholder="Nama lengkap Anda"
+                            required
+                            minlength="3">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emailDaftar">Email <span class="required">*</span></label>
+                        <input 
+                            type="email" 
+                            id="emailDaftar" 
+                            placeholder="email@ut.ac.id"
+                            required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passwordDaftar">Password <span class="required">*</span></label>
+                        <input 
+                            type="password" 
+                            id="passwordDaftar" 
+                            placeholder="Minimal 6 karakter"
+                            required
+                            minlength="6">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="konfirmasiPassword">Konfirmasi Password <span class="required">*</span></label>
+                        <input 
+                            type="password" 
+                            id="konfirmasiPassword" 
+                            placeholder="Ulangi password"
+                            required
+                            minlength="6">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="roleDaftar">Role <span class="required">*</span></label>
+                        <select id="roleDaftar" required>
+                            <option value="">Pilih Role</option>
+                            <option value="UPBJJ-UT">UPBJJ-UT</option>
+                            <option value="Puslaba">Puslaba</option>
+                            <option value="Fakultas">Fakultas</option>
+                            <option value="Administrator">Administrator</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lokasiDaftar">Lokasi <span class="required">*</span></label>
+                        <input 
+                            type="text" 
+                            id="lokasiDaftar" 
+                            placeholder="Contoh: UPBJJ Jakarta"
+                            required>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="btnBatalDaftar">
+                            Batal
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Daftar Sekarang
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>
